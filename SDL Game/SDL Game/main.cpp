@@ -122,7 +122,10 @@ void Update()
 	// Update objects
 	
 	for (Entity entity : Entities)
-		entity.Update();
+	{
+		if (entity.initialized)
+			entity.Update();
+	}
 
 	Render();
 }

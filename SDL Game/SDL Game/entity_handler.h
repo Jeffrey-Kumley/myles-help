@@ -9,12 +9,15 @@ public:
 	const char * name = "NULL";
 	const char * entityFrame = "none";
 	int index = -1;
+	int initialized = false;
 
 	PlayerCMPT player;
 	TransformCMPT transform;
 
 	void Initalize()
 	{
+		initialized = true;
+
 		transform.x = 0;
 		transform.y = 0;
 

@@ -4,28 +4,17 @@ Entity Entities[1000];
 
 Entity * CreateEntity(const char * name, const char * entityFrame)
 {
-	Entity entity;
-	entity.name = name;
-	
-	if (entityFrame == "player")
-	{
-		entity.entityFrame = "player";
-		
-	}
-
-	entity.Initalize();
-
 	for (int i = 0; i < 1000; ++i)
 	{
-		if (Entities[i].name == "NULL")
+		if (Entities[i].initialized == false)
 		{
-			entity.index = i;
-
-			Entities[i] = entity;
-			
-			entity.player.active = true;
+			Entities[i].Initalize();
+			Entities[i].index = i;
+			Entities[i].name = name;
+			Entities[i].entityFrame = entityFrame;
+			Entities[i].player.active = true;
+			return &Entities[i];
 		}
 	}
-
-	return &entity;
+	return nullptr;
 }
