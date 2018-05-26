@@ -6,13 +6,20 @@ Entity * CreateEntity(const char * name, const char * entityFrame)
 {
 	for (int i = 0; i < 1000; ++i)
 	{
-		if (Entities[i].initialized == false)
+		if (Entities[i].name == "NULL")
 		{
-			Entities[i].Initalize();
 			Entities[i].index = i;
 			Entities[i].name = name;
-			Entities[i].entityFrame = entityFrame;
-			Entities[i].player.active = true;
+
+			if (entityFrame == "player")
+			{
+				Entities[i].entityFrame = "player";
+
+				Entities[i].player.active = true;
+			}
+
+			Entities[i].Initalize();
+			
 			return &Entities[i];
 		}
 	}
